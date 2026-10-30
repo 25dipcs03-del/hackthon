@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F0F4F8;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Typography ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ─── Component Layer ────────────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold text-sm
+           hover:bg-primary-light active:scale-[0.98] transition-all duration-200 shadow-sm hover:shadow-md
+           focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-secondary text-white px-5 py-2.5 rounded-xl font-semibold text-sm
+           hover:bg-secondary-dark active:scale-[0.98] transition-all duration-200 shadow-sm hover:shadow-md
+           focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:ring-offset-2;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary bg-white px-5 py-2.5 rounded-xl font-semibold text-sm
+           hover:border-primary hover:bg-primary/5 active:scale-[0.98] transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary/30;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 text-slate-600 px-4 py-2 rounded-xl font-medium text-sm
+           hover:bg-slate-100 hover:text-slate-900 active:scale-[0.98] transition-all duration-150;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 bg-red-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm
+           hover:bg-red-600 active:scale-[0.98] transition-all duration-200;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl border border-civic-border shadow-card p-6;
+  }
+  .card-hover {
+    @apply bg-white rounded-2xl border border-civic-border shadow-card p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 cursor-pointer;
+  }
+  .stat-card {
+    @apply bg-white rounded-2xl border border-civic-border shadow-card p-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200;
+  }
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl;
+  }
+
+  /* Priority Badges */
+  .badge-critical {
+    @apply inline-flex items-center gap-1 bg-red-50 text-red-700 border border-red-200 text-xs font-bold px-2.5 py-1 rounded-full;
+  }
+  .badge-high {
+    @apply inline-flex items-center gap-1 bg-orange-50 text-orange-700 border border-orange-200 text-xs font-bold px-2.5 py-1 rounded-full;
+  }
+  .badge-medium {
+    @apply inline-flex items-center gap-1 bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-2.5 py-1 rounded-full;
+  }
+  .badge-low {
+    @apply inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-full;
+  }
+
+  /* Form inputs */
+  .input-field {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900
+           placeholder:text-slate-400 shadow-xs
+           focus:outline-none focus:ring-2 focus:ring-secondary/25 focus:border-secondary
+           transition-all duration-200;
+  }
+  .input-field:hover:not(:focus) { @apply border-slate-300; }
+
+  /* Labels */
+  .form-label {
+    @apply block text-sm font-semibold text-slate-700 mb-1.5 tracking-tight;
+  }
+
+  /* Section header */
+  .section-label {
+    @apply text-xs font-bold text-slate-400 uppercase tracking-widest mb-3;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-slate-100;
+  }
+
+  /* Page header */
+  .page-title {
+    @apply text-2xl font-black text-primary tracking-tight;
+  }
+  .page-subtitle {
+    @apply text-sm text-slate-500 mt-0.5 font-normal;
+  }
+
+  /* Table */
+  .table-header {
+    @apply text-left py-3 px-4 text-2xs font-bold text-slate-400 uppercase tracking-widest bg-slate-50/80;
+  }
+  .table-cell {
+    @apply py-3.5 px-4 text-sm text-slate-700 border-b border-slate-50;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-white/60
+           hover:bg-white/10 hover:text-white transition-all duration-150 cursor-pointer select-none;
+  }
+  .nav-item-active {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold
+           bg-white/15 text-white shadow-inner-sm;
+  }
+
+  /* Status pill */
+  .status-submitted   { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100; }
+  .status-under-review { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-violet-50 text-violet-700 border border-violet-100; }
+  .status-assigned    { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100; }
+  .status-in-progress { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-100; }
+  .status-resolved    { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100; }
+
+  /* Skeleton */
+  .skeleton {
+    @apply bg-slate-200 rounded-xl animate-pulse;
+  }
+
+  /* Notification dot */
+  .notif-dot {
+    @apply absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white;
+  }
+}
+
+/* ─── Leaflet overrides ──────────────────────────────────── */
+.leaflet-container { z-index: 1; font-family: 'Inter', sans-serif; }
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.leaflet-popup-tip { background: white !important; }
+
+/* ─── Recharts overrides ─────────────────────────────────── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line { stroke: #f1f5f9 !important; }
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  border-radius: 10px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+  font-size: 12px !important;
+}
+
+/* ─── Transitions ────────────────────────────────────────── */
+.transition-page { animation: fadeIn 0.35s ease-out; }
+
+@keyframes fadeIn    { from { opacity: 0; transform: translateY(8px);  } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideLeft { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn   { from { opacity: 0; transform: scale(0.97);       } to { opacity: 1; transform: scale(1);    } }
+
+/* ─── Gradient text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #19B6A4 0%, #2b8fde 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Hero pattern ───────────────────────────────────────── */
+.hero-dots {
+  background-image: radial-gradient(rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* ─── Focus ring reset ───────────────────────────────────── */
+:focus-visible { outline: 2px solid #19B6A4; outline-offset: 2px; }
